@@ -2,8 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' hide ChangeNotifierProvider;
 import 'Services/InventoryProvider.dart';
 import 'Services/Notification.dart';
 import 'Services/ShiftProvider.dart';
@@ -27,17 +28,21 @@ void main() async {
   // Initialize Notifications
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => InventoryProvider()), // Existing provider
-        ChangeNotifierProvider(create: (context) => MealTicketProvider()), // Meal Ticket Provider
-        ChangeNotifierProvider(create: (context) => ShiftProvider()),
-        ChangeNotifierProvider(create: (context) => NotificationProvider()),// Shift Provider
-      ],
-      child: const MyApp(),
-    ),
-  );
+  final inventoryProvider =
+      ChangeNotifierProvider((ref) => InventoryProvider());
+  final mealTicketProvider =
+      ChangeNotifierProvider((ref) => MealTicketProvider());
+  final shiftProvider = ChangeNotifierProvider((ref) => ShiftProvider());
+  final notificationProvider =
+      ChangeNotifierProvider((ref) => NotificationProvider());
+
+  void main() {
+    runApp(
+      const ProviderScope(
+        child: MyApp(),
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
