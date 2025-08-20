@@ -57,12 +57,12 @@ class _SupervisorLoginPageState extends State<SupervisorLoginPage> {
                 SizedBox(
                   height: 30,
                 ),
-                resuableTextField("Enter Username", Icons.person_outline, false,
+                reusableTextField("Enter Username", Icons.person_outline, false,
                     _emailTextController),
                 SizedBox(
                   height: 20,
                 ),
-                resuableTextField("Enter Password", Icons.lock_outline, false,
+                reusableTextField("Enter Password", Icons.lock_outline, false,
                     _passwordTextController),
                 SizedBox(
                   height: 30,
