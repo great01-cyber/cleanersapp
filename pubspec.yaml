@@ -43,6 +43,8 @@ dependencies:
   video_player:
   flutter_local_notifications: ^17.2.1
   flutter_quill:
+  riverpod:
+  riverpod_generator:
 
 
 
