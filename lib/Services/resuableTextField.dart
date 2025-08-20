@@ -18,13 +18,12 @@ TextField reusableTextField(
   String text,
   IconData icon,
   bool isPasswordType,
-  TextEditingController controller,
-  void Function(String)? func, // 👈 added callback here
-) {
+  TextEditingController controller, {
+  void Function(String)? func,
+}) {
   return TextField(
     controller: controller,
     onChanged: func,
-    // 👈 hook up the callback
     obscureText: isPasswordType,
     enableSuggestions: !isPasswordType,
     autocorrect: !isPasswordType,
