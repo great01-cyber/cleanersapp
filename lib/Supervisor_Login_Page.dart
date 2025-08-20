@@ -80,6 +80,7 @@ class _SupervisorLoginPageState extends State<SupervisorLoginPage> {
     );
   }
 
+
   Row signUpOption(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
