@@ -17,12 +17,10 @@ Image logoWidget(String imageName) {
 TextField reusableTextField(
   String text,
   IconData icon,
-  bool isPasswordType,
-  TextEditingController controller, {
+  bool isPasswordType, {
   void Function(String)? func,
 }) {
   return TextField(
-    controller: controller,
     onChanged: func,
     obscureText: isPasswordType,
     enableSuggestions: !isPasswordType,

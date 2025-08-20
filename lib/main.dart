@@ -1,21 +1,20 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:provider/provider.dart' hide ChangeNotifierProvider;
+
 import 'Services/InventoryProvider.dart';
 import 'Services/Notification.dart';
 import 'Services/ShiftProvider.dart';
 import 'homepage.dart';
-import 'meal_ticket_provider.dart'; // Your existing homepage
+import 'meal_ticket_provider.dart';
 
 // Initialize Flutter Local Notifications
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Android Initialization Settings
@@ -28,21 +27,11 @@ void main() async {
   // Initialize Notifications
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
-  final inventoryProvider =
-      ChangeNotifierProvider((ref) => InventoryProvider());
-  final mealTicketProvider =
-      ChangeNotifierProvider((ref) => MealTicketProvider());
-  final shiftProvider = ChangeNotifierProvider((ref) => ShiftProvider());
-  final notificationProvider =
-      ChangeNotifierProvider((ref) => NotificationProvider());
-
-  void main() {
-    runApp(
-      const ProviderScope(
-        child: MyApp(),
-      ),
-    );
-  }
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -57,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage(), // Your existing homepage
+      home: const HomePage(), // ✅ add const if possible
     );
   }
 }

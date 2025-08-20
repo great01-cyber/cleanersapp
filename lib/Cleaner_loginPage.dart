@@ -53,12 +53,12 @@ class CleanersLoginPage extends StatelessWidget {
                   height: 30,
                 ),
                 reusableTextField("Enter Username", Icons.person_outline, false,
-                    _emailTextController),
+                ),
                 SizedBox(
                   height: 20,
                 ),
                 reusableTextField("Enter Password", Icons.lock_outline, false,
-                    _passwordTextController),
+                ),
                 SizedBox(
                   height: 30,
                 ),
