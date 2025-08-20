@@ -62,6 +62,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(
                   height: 30,
                 ),
+                resuableTextField("Confirm password", Icons.lock_outline, false,
+                    _passwordTextController),
+                SizedBox(
+                  height: 30,
+                ),
                 signInSignUPButton(context, true, () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SupervisorDashboard()));
