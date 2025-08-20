@@ -45,6 +45,9 @@ dependencies:
   flutter_quill:
   riverpod:
   riverpod_generator:
+  build_runner:
+  flutter_riverpod: ^2.5.0
+  riverpod_annotation:
 
 
 
