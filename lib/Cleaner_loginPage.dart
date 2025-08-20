@@ -62,10 +62,17 @@ class CleanersLoginPage extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                signInSignUPButton(context, true, () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CleanersDashboard()));
-                }),
+                signInSignUPButton(
+                  context,
+                  true,
+                  func: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CleanersDashboard()),
+                    );
+                  },
+                ),
                 signUpOption(context)
               ],
             ),

@@ -3,6 +3,7 @@ import 'package:uos/HomePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uos/signUpLogin/appLoader.dart';
+import 'package:uos/signUpLogin/signUp%20Controller.dart';
 import 'package:uos/signUpLogin/signUp.dart';
 
 import 'Services/Color.dart';
@@ -17,6 +18,7 @@ class SignUpScreen extends ConsumerStatefulWidget {
 }
 
 class _SignUpScreenState extends ConsumerState<SignUpScreen> {
+  late SignUpController _controller;
   @override
   Widget build(BuildContext context) {
     final loader = ref.watch(apploaderProvider);
@@ -87,12 +89,11 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       SizedBox(
                   height: 30,
                 ),
-                signInSignUPButton(context, true, () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SupervisorDashboard()));
-                }),
+                signInSignUPButton(
+                  context,
+                  true,
+                  func: () => _controller.handleSignUp(),
+                ),
               ],
             ),
           ),

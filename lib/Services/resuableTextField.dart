@@ -47,7 +47,6 @@ TextField reusableTextField(
 
 Container signInSignUPButton(BuildContext context, bool isLogin,
     {VoidCallback? func}) {
-  // optional void function
   return Container(
     width: MediaQuery.of(context).size.width,
     height: 50,

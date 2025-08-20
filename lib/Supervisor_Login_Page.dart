@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Cleaner/Cleaners Dashboard/CleanersDashboard.dart';
 import 'Services/Color.dart';
 import 'Services/resuableTextField.dart';
 import 'SignUpScreeen.dart';
@@ -64,10 +65,17 @@ class _SupervisorLoginPageState extends State<SupervisorLoginPage> {
                 SizedBox(
                   height: 30,
                 ),
-                signInSignUPButton(context, true, () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SupervisorDashboard()));
-                }),
+                signInSignUPButton(
+                  context,
+                  true,
+                  func: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CleanersDashboard()),
+                    );
+                  },
+                ),
                 signUpOption(context)
               ],
             ),
