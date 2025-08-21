@@ -102,7 +102,9 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                                 .read(signUpProvider.notifier)
                                 .onChangedRePassword(value),
                           ),
-                          const Spacer(), // pushes button to bottom
+                          SizedBox(
+                            height: 80,
+                          ), // pushes button to bottom
                           signInSignUPButton(
                             context,
                             false, // false = SignUp
@@ -113,7 +115,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                     ),
                   ),
                 ),
-        ),
+              ),
             )
           : const Center(
               child: CircularProgressIndicator(
