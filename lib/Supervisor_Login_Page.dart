@@ -9,6 +9,7 @@ import 'Services/resuableTextField.dart';
 import 'SignUpScreeen.dart';
 import 'Supervisor/SignInNotifier.dart';
 import 'Supervisor/Supervisor Dashboard/Supervisor Dashboard.dart';
+import 'Supervisor/Supervisor Dashboard/signInController.dart';
 
 class SupervisorLoginPage extends ConsumerStatefulWidget {
   const SupervisorLoginPage({super.key});
@@ -67,26 +68,25 @@ class _SupervisorLoginPageState extends ConsumerState<SupervisorLoginPage> {
                         "Enter Username",
                         Icons.person_outline,
                         false,
+                        func: (value) => ref
+                            .read(signInNotifierProvider.notifier)
+                            .onChangedEmail(value),
                       ),
                       const SizedBox(height: 20),
                       reusableTextField(
                         "Enter Password",
                         Icons.lock_outline,
                         true,
+                        func: (value) => ref
+                            .read(signInNotifierProvider.notifier)
+                            .onChangedPassword(value),
                       ),
                       const SizedBox(height: 30),
                       signInSignUPButton(
                   context,
                   true,
-                  func: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                              builder: (context) => CleanersDashboard(),
-                            ),
-                          );
-                  },
-                ),
+                        func: () => _controller.handleSignIn(),
+                      ),
                       signUpOption(context),
                     ],
             ),

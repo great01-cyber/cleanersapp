@@ -12,6 +12,11 @@ class SignUpController {
 
   SignUpController({required this.ref});
 
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmpasswordController = TextEditingController();
+
   Future<void> handleSignUp() async {
     var state = ref.read(signUpProvider);
 
@@ -19,6 +24,11 @@ class SignUpController {
     String email = state.email;
     String password = state.password;
     String repassword = state.rePassword;
+
+    userNameController.text = name;
+    emailController.text = email;
+    passwordController.text = password;
+    confirmpasswordController.text = repassword;
 
     // 1. Check empty fields
     if (name.isEmpty ||
