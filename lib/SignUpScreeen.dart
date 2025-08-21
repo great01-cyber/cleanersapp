@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uos/HomePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:uos/HomePage.dart';
 import 'package:uos/signUpLogin/appLoader.dart';
 import 'package:uos/signUpLogin/signUp%20Controller.dart';
 import 'package:uos/signUpLogin/signUp.dart';
@@ -29,80 +29,88 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     final loader = ref.watch(apploaderProvider);
-    final regProvider = ref.watch(signUpProvider);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign Up Page"),
+        title: const Text("Sign Up Page"),
       ),
       body: loader == false
           ? Container(
-              width: double.infinity, // full width
+              width: double.infinity,
+              height: double.infinity,
               decoration: BoxDecoration(
-          gradient: LinearGradient(
+                gradient: LinearGradient(
             colors: [
               hexStringToColor("CB2B93"),
               hexStringToColor("9546c4"),
                     hexStringToColor("5E61F4"),
                   ],
-            begin: Alignment.topCenter,
+                  begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
         ),
         child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-                    20,
-                    MediaQuery.of(context).size.height * 0.2,
-                    20,
-                    0,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: MediaQuery.of(context).size.height,
                   ),
-                  child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 30,
-                ),
-                reusableTextField(
-                  "Enter Username",
-                  Icons.person_outline,
-                  false,
-                  func: (value) => ref
-                      .read(signUpProvider.notifier)
-                      .onChangedUsername(value),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                reusableTextField("Enter Email Id", Icons.lock_outline, false,
-                        func: (value) => ref
-                            .read(signUpProvider.notifier)
-                            .onChangedUsername(value),
+                  child: IntrinsicHeight(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        20,
+                        MediaQuery.of(context).size.height * 0.1,
+                        20,
+                        20,
                       ),
-                      SizedBox(
-                  height: 30,
-                ),
-                reusableTextField("Enter Password", Icons.lock_outline, false,
-                        func: (value) => ref
-                            .read(signUpProvider.notifier)
-                            .onChangedUsername(value),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          const SizedBox(height: 30),
+                          reusableTextField(
+                            "Enter Username",
+                            Icons.person_outline,
+                            false,
+                            func: (value) => ref
+                                .read(signUpProvider.notifier)
+                                .onChangedUsername(value),
+                          ),
+                          const SizedBox(height: 20),
+                          reusableTextField(
+                            "Enter Email Id",
+                            Icons.email_outlined,
+                            false,
+                            func: (value) => ref
+                                .read(signUpProvider.notifier)
+                                .onChangedEmail(value),
+                          ),
+                          const SizedBox(height: 30),
+                          reusableTextField(
+                            "Enter Password",
+                            Icons.lock_outline,
+                            true,
+                            func: (value) => ref
+                                .read(signUpProvider.notifier)
+                                .onChangedPassword(value),
+                          ),
+                          const SizedBox(height: 30),
+                          reusableTextField(
+                            "Confirm Password",
+                            Icons.lock_outline,
+                            true,
+                            func: (value) => ref
+                                .read(signUpProvider.notifier)
+                                .onChangedRePassword(value),
+                          ),
+                          const Spacer(), // pushes button to bottom
+                          signInSignUPButton(
+                            context,
+                            false, // false = SignUp
+                            () => _controller.handleSignUp(),
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                  height: 30,
-                ),
-                reusableTextField("Confirm password", Icons.lock_outline, false,
-                        func: (value) => ref
-                            .read(signUpProvider.notifier)
-                            .onChangedUsername(value),
-                      ),
-                      SizedBox(
-                  height: 30,
-                ),
-                signInSignUPButton(
-                  context,
-                  true,
-                  func: () => _controller.handleSignUp(),
-                ),
-              ],
-            ),
+                    ),
+                  ),
           ),
         ),
             )
