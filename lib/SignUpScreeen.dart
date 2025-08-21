@@ -19,6 +19,13 @@ class SignUpScreen extends ConsumerStatefulWidget {
 
 class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   late SignUpController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = SignUpController(ref: ref);
+  }
+
   @override
   Widget build(BuildContext context) {
     final loader = ref.watch(apploaderProvider);
