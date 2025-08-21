@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:uos/HomePage.dart';
-import 'package:uos/signUpLogin/appLoader.dart';
-import 'package:uos/signUpLogin/signUp%20Controller.dart';
-import 'package:uos/signUpLogin/signUp.dart';
+import 'package:uosc/HomePage.dart';
+import 'package:uosc/signUpLogin/appLoader.dart';
+import 'package:uosc/signUpLogin/signUp%20Controller.dart';
+import 'package:uosc/signUpLogin/signUp.dart';
 
 import 'Services/Color.dart';
 import 'Services/resuableTextField.dart';
@@ -29,6 +29,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     final loader = ref.watch(apploaderProvider);
+    final regProvider = ref.watch(signUpProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -40,13 +41,13 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
               height: double.infinity,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-            colors: [
+                  colors: [
               hexStringToColor("CB2B93"),
               hexStringToColor("9546c4"),
                     hexStringToColor("5E61F4"),
                   ],
                   begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+                  end: Alignment.bottomCenter,
           ),
         ),
         child: SingleChildScrollView(
@@ -105,13 +106,13 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                           signInSignUPButton(
                             context,
                             false, // false = SignUp
-                            () => _controller.handleSignUp(),
+                            func: () => _controller.handleSignUp(),
                           ),
                         ],
                       ),
                     ),
                   ),
-          ),
+                ),
         ),
             )
           : const Center(

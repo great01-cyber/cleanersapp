@@ -1,6 +1,6 @@
 {
-    "name": "uos",
-    "short_name": "uos",
+  "name": "uosc",
+  "short_name": "uosc",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

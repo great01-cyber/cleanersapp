@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uos/signUpLogin/signUp.dart';
+import 'package:uosc/signUpLogin/signUp.dart';
 
 import '../Services/popMessaging.dart';
 import 'appLoader.dart';
