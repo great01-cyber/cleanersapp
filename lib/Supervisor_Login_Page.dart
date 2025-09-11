@@ -85,7 +85,7 @@ class _SupervisorLoginPageState extends ConsumerState<SupervisorLoginPage> {
                       signInSignUPButton(
                   context,
                   true,
-                        func: () => _controller.handleSignIn(),
+                        func: () => _controller.handleSignIn(context),
                       ),
                       signUpOption(context),
                     ],

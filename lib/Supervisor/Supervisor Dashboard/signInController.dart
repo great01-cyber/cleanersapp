@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path/path.dart';
+import 'package:uosc/Cleaner/Cleaners%20Dashboard/CleanersDashboard.dart';
 import '../../Services/popMessaging.dart';
 import '../../signUpLogin/appLoader.dart';
 import '../SignInNotifier.dart';
@@ -14,7 +17,7 @@ class SignInController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  Future<void> handleSignIn() async {
+  Future<User?> handleSignIn(BuildContext context) async {
     final state = ref.read(signInNotifierProvider);
     final String email = state.email;
     final String password = state.password;
@@ -25,14 +28,14 @@ class SignInController {
     // 1) Required fields
     if (email.isEmpty || password.isEmpty) {
       toastInfo("Please enter email and password");
-      return;
+      return null;
     }
 
     // 2) Email format (optional but helpful)
     final emailRegEx = RegExp(r'^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegEx.hasMatch(email)) {
       toastInfo("Please enter a valid email address");
-      return;
+      return null;
     }
 
     // 3) Start loader
@@ -51,7 +54,7 @@ class SignInController {
         toastInfo(
             "Your email isn't verified. We've sent you a new verification email.");
         await FirebaseAuth.instance.signOut();
-        return;
+        return null;
       }
 
       // 🔹 Access user details
@@ -74,6 +77,10 @@ class SignInController {
         // Send data (placeholder function for now)
         await asyncPostAllData(loginRequestEntity);
       }
+      return Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => CleanersDashboard()),
+      );
 
       toastInfo("Signed in successfully!");
       // TODO: Navigate to your home screen if needed.

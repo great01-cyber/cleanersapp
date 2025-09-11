@@ -32,7 +32,7 @@ class _CleanersDashboardState extends State<CleanersDashboard> {
         title: const Text('Cleaners Dashboard'),
         backgroundColor: Colors.green,
         actions: [
-          Consumer<NotificationProvider>(
+          /*Consumer<NotificationProvider>(
             builder: (context, notificationProvider, child) {
               return Stack(
                 children: [
@@ -58,7 +58,7 @@ class _CleanersDashboardState extends State<CleanersDashboard> {
                 ],
               );
             },
-          ),
+          ),*/
         ],
       ),
 
