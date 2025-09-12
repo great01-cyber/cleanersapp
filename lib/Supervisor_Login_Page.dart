@@ -83,9 +83,24 @@ class _SupervisorLoginPageState extends ConsumerState<SupervisorLoginPage> {
                       ),
                       const SizedBox(height: 30),
                       signInSignUPButton(
-                  context,
+                        context,
                   true,
-                        func: () => _controller.handleSignIn(context),
+                        func: () async {
+                          final user = await _controller.handleSignIn(context);
+                          if (user != null) {
+                            // Navigate to Dashboard
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SupervisorDashboard()),
+                            );
+                          } else {
+                            // Show error if sign-in failed
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Sign in failed")),
+                            );
+                          }
+                        },
                       ),
                       signUpOption(context),
                     ],
