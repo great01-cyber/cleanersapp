@@ -9,7 +9,7 @@ import 'Services/resuableTextField.dart';
 import 'SignUpScreeen.dart';
 import 'Supervisor/SignInNotifier.dart';
 import 'Supervisor/Supervisor Dashboard/Supervisor Dashboard.dart';
-import 'Supervisor/Supervisor Dashboard/signInController.dart';
+import 'Supervisor/Supervisor Dashboard/SignInControllerSupervisor.dart';
 
 class SupervisorLoginPage extends ConsumerStatefulWidget {
   const SupervisorLoginPage({super.key});
@@ -20,11 +20,11 @@ class SupervisorLoginPage extends ConsumerStatefulWidget {
 }
 
 class _SupervisorLoginPageState extends ConsumerState<SupervisorLoginPage> {
-  late SignInController _controller;
+  late SignInControllerSupervisor _controller;
 
   @override
   void initState() {
-    _controller = SignInController(ref);
+    _controller = SignInControllerSupervisor(ref);
     super.initState();
   }
 

@@ -4,12 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uosc/signUpLogin/appLoader.dart';
 
 import 'Cleaner/Cleaners Dashboard/CleanersDashboard.dart';
+import 'Cleaner/Cleaners Dashboard/SignInControllerCleaner.dart';
 import 'Services/Color.dart';
 import 'Services/resuableTextField.dart';
 import 'SignUpScreeen.dart';
 import 'Supervisor/SignInNotifier.dart';
 import 'Supervisor/Supervisor Dashboard/Supervisor Dashboard.dart';
-import 'Supervisor/Supervisor Dashboard/signInController.dart';
+import 'Supervisor/Supervisor Dashboard/SignInControllerSupervisor.dart';
 
 class CleanersLoginPage extends ConsumerStatefulWidget {
   const CleanersLoginPage({super.key});
@@ -19,11 +20,11 @@ class CleanersLoginPage extends ConsumerStatefulWidget {
 }
 
 class _SupervisorLoginPageState extends ConsumerState<CleanersLoginPage> {
-  late SignInController _controller;
+  late SignInControllerCleaner _controller;
 
   @override
   void initState() {
-    _controller = SignInController(ref);
+    _controller = SignInControllerCleaner(ref);
     super.initState();
   }
 

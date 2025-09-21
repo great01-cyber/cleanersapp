@@ -21,7 +21,7 @@ class _PostShiftsPageState extends State<PostShifts> {
   String? selectedCleaner;
   List<String> cleaners = ["John Doe", "Jane Smith", "Mike Brown"];
 
-  @override
+  /*@override
   void initState() {
     super.initState();
     _initializeNotifications();
@@ -59,6 +59,7 @@ class _PostShiftsPageState extends State<PostShifts> {
       platformChannelSpecifics,
     );
   }
+  */
 
   void _postShift() {
     if (_dateController.text.isNotEmpty &&
@@ -79,7 +80,7 @@ class _PostShiftsPageState extends State<PostShifts> {
       );
 
       // Show local notification
-      _showNotification(selectedCleaner!);
+      //_showNotification(selectedCleaner!);
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Shift assigned successfully!")),

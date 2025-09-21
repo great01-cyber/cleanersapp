@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:uosc/Cleaner/Cleaners%20Dashboard/CleanersDashboard.dart';
+import 'package:uosc/Supervisor/Supervisor%20Dashboard/Supervisor%20Dashboard.dart';
 import '../../Services/popMessaging.dart';
 import '../../signUpLogin/appLoader.dart';
 import '../SignInNotifier.dart';
 import '../loginRequestEntity.dart';
 
-class SignInController {
+class SignInControllerSupervisor {
   final WidgetRef ref;
 
-  SignInController(this.ref);
+  SignInControllerSupervisor(this.ref);
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -79,7 +80,7 @@ class SignInController {
       }
       return Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => CleanersDashboard()),
+        MaterialPageRoute(builder: (context) => SupervisorDashboard()),
       );
 
       toastInfo("Signed in successfully!");
